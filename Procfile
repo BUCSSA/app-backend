@@ -1,1 +1,1 @@
-web: ZhenjieRuan
+web: go run src/server.go

@@ -6,7 +6,6 @@ import (
 	"os"
 
 	"github.com/codegangsta/negroni"
-	"github.com/gorilla/mux"
 )
 
 var (
@@ -28,13 +27,10 @@ func init() {
 
 func main() {
 
-	route := mux.NewRouter()
-
-	route.HandleFunc("/", HomeHandler)
-	route.HandleFunc("/api/promos", PromorQueryHandler)
+	route := NewRouter()
 
 	n := negroni.Classic()
 	n.UseHandler(route)
 
-	http.ListenAndServe(":"+port, n)
+	log.Fatal(http.ListenAndServe(":"+port, n))
 }
